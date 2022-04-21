@@ -1,5 +1,5 @@
 import { useConnection, useWallet } from '@solana/wallet-adapter-react';
-import { Keypair, PublicKey, SystemProgram, Transaction, TransactionSignature } from '@solana/web3.js';
+import { Keypair, LAMPORTS_PER_SOL, PublicKey, SystemProgram, Transaction, TransactionSignature } from '@solana/web3.js';
 import { FC, useCallback } from 'react';
 import { notify } from "../utils/notifications";
 
@@ -21,7 +21,7 @@ export const SendTransaction: FC = () => {
                 SystemProgram.transfer({
                     fromPubkey: publicKey,
                     toPubkey: toPubkey,
-                    lamports: 1,
+                    lamports: LAMPORTS_PER_SOL,
                 })
             );
 
