@@ -1,5 +1,5 @@
 import { useConnection, useWallet } from '@solana/wallet-adapter-react';
-import { Keypair, SystemProgram, Transaction, TransactionSignature } from '@solana/web3.js';
+import { Keypair, PublicKey, SystemProgram, Transaction, TransactionSignature } from '@solana/web3.js';
 import { FC, useCallback } from 'react';
 import { notify } from "../utils/notifications";
 
@@ -15,11 +15,12 @@ export const SendTransaction: FC = () => {
         }
 
         let signature: TransactionSignature = '';
+        let toPubkey = new PublicKey("GeoUoLKmmCpn1Jee8xAGgKRaqLLdQHTFx3TqA6s2ngqj");
         try {
             const transaction = new Transaction().add(
                 SystemProgram.transfer({
                     fromPubkey: publicKey,
-                    toPubkey: "GeoUoLKmmCpn1Jee8xAGgKRaqLLdQHTFx3TqA6s2ngqj",
+                    toPubkey: toPubkey,
                     lamports: 1,
                 })
             );
