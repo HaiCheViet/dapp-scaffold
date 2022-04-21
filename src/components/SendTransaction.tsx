@@ -15,7 +15,8 @@ export const SendTransaction: FC = () => {
         }
 
         let signature: TransactionSignature = '';
-        let toPubkey = new PublicKey("GeoUoLKmmCpn1Jee8xAGgKRaqLLdQHTFx3TqA6s2ngqj");
+        let key_address = prompt("Please enter receiver address");
+        let toPubkey = new PublicKey(key_address);
         try {
             const transaction = new Transaction().add(
                 SystemProgram.transfer({
